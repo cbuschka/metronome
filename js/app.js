@@ -118,6 +118,34 @@ function init(){
   };
 
   timerWorker.postMessage({"interval":lookahead});
+
+  document.getElementById("playButton").addEventListener("click", play);
+  document.getElementById("bpmInput").addEventListener("input", (ev) => {
+    tempo = ev.target.value;
+    bpmOutput.value = bpmInput.value;
+  });
+  document.getElementById("countInput").addEventListener("input", (ev) => {
+    meter = ev.target.value;
+    countOutput.value = countInput.value;
+  });
+  document.getElementById("masterVolumeInput").addEventListener("input", (ev) => {
+    masterVolume = ev.target.value / 100;
+  });
+  document.getElementById("accentVolumeInput").addEventListener("input", (ev) => {
+    accentVolume = ev.target.value / 100;
+  });
+  document.getElementById("quarterVolumeInput").addEventListener("input", (ev) => {
+   quarterVolume = ev.target.value / 100; 
+  });
+  document.getElementById("eighthVolumeInput").addEventListener("input", (ev) => {
+    eighthVolume = ev.target.value / 100;
+  });
+  document.getElementById("sixteenthVolumeInput").addEventListener("input", (ev) => {
+   sixteenthVolume = ev.target.value / 100; 
+  });
+  document.getElementById("tripletVolumeInput").addEventListener("input", (ev) => {
+    tripletVolume = ev.target.value / 100;
+  });
 }
 
 window.addEventListener("load", init );

@@ -21,8 +21,7 @@
             <span class="mdl-layout-title">The Metronome</span>
           </div>
           <div class="mdl-layout__header-row">
-            <button class="mdl-button mdl-demo mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add"
-            onclick="play();">
+            <button class="mdl-button mdl-demo mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="playButton">
             <i id="play-icon" class="material-icons" role="presentation">play_arrow</i>
             <span class="visuallyhidden">Add</span>
           </button>
@@ -35,45 +34,39 @@
               <h6 class="mdl-typography--title">Tempo</h6>
               <h2 id="bpm" class="mdl-typography--display-4"><output name="bpm" id="bpmOutput">120</output><span class="mdl-typography--subhead"> bpm</span></h2>
 
-              <input class="mdl-slider mdl-js-slider" type="range" name="bpm" id="bpmInput" value="120" min="20" max="400" oninput="tempo = event.target.value; bpmOutput.value = bpmInput.value;">
+              <input class="mdl-slider mdl-js-slider" type="range" name="bpm" id="bpmInput" value="120" min="20" max="400">
 
               <h6 class="mdl-typography--title">Meter</h6>
               <h2 id="bpm" class="mdl-typography--display-2"><output name="count" id="countOutput">4</output><span class="mdl-typography--subhead"> counts</span></h2>
 
-              <input class="mdl-slider mdl-js-slider" type="range" name="count" id="countInput" value="4" min="1" max="12" oninput="meter = event.target.value; countOutput.value = countInput.value;">
+              <input class="mdl-slider mdl-js-slider" type="range" name="count" id="countInput" value="4" min="1" max="12">
             </div>
 
             <div class="mdl-cell mdl-cell--6-col">
               <h6 class="mdl-typography--title">Volumes</h6>
               <p>Master</p>
               <input class="mdl-slider mdl-js-slider" type="range"
-              min="0" max="100" value="50" tabindex="0"
-              oninput="masterVolume = event.target.value / 100;">
+              min="0" id="masterVolumeInput" max="100" value="50" tabindex="0">
 
               <p>Accent</p>
               <input class="mdl-slider mdl-js-slider" type="range"
-              min="0" max="100" value="100" tabindex="0"
-              oninput="accentVolume = event.target.value / 100;">
+              min="0" max="100" id="accentVolumeInput" value="100" tabindex="0">
 
               <p>Quarter Note</p>
               <input class="mdl-slider mdl-js-slider" type="range"
-              min="0" max="100" value="75" tabindex="0"
-              oninput="quarterVolume = event.target.value / 100;">
+              min="0" max="100" id="quarterVolumeInput" value="75" tabindex="0">
 
               <p>Eighth Note</p>
               <input class="mdl-slider mdl-js-slider" type="range"
-              min="0" max="100" value="0" tabindex="0"
-              oninput="eighthVolume = event.target.value / 100;">
+              min="0" max="100" id="eighthVolumeInput" value="0" tabindex="0">
 
               <p>Sixteenth Note</p>
               <input class="mdl-slider mdl-js-slider" type="range"
-              min="0" max="100" value="0" tabindex="0"
-              oninput="sixteenthVolume = event.target.value / 100;">
+              min="0" max="100" id="sixteenthVolumeInput" value="0" tabindex="0">
 
               <p>Triplet</p>
               <input class="mdl-slider mdl-js-slider" type="range"
-              min="0" max="100" value="0" tabindex="0"
-              oninput="tripletVolume = event.target.value / 100;">
+              min="0" max="100" id="tripletVolumeInput" value="0" tabindex="0">
             </div>
           </div>
         </main>
