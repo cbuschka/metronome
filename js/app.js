@@ -107,7 +107,7 @@ function play() {
 
 function init(){
   audioContext = new AudioContext();
-  timerWorker = new Worker("assets/js/worker.js");
+  timerWorker = new Worker("js/worker.js");
 
   timerWorker.onmessage = function(e) {
     if (e.data == "tick") {

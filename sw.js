@@ -1,12 +1,12 @@
 const cacheName = 'metronome-v1';
 const appShellFiles = [
-'assets/css/reset.css',
-'assets/css/main.css',
-'assets/img/screenshot.png',
-'assets/js/metronome.js',
-'assets/js/worker.js',
-'assets/icons/icon-48.png',
-'assets/icons/icon-512.png',
+'css/reset.css',
+'css/main.css',
+'img/screenshot.png',
+'js/app.js',
+'js/worker.js',
+'icons/icon-48.png',
+'icons/icon-512.png',
 'index.html'
 ];
 const contentToCache = appShellFiles;
