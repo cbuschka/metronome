@@ -2,7 +2,6 @@ const cacheName = 'metronome-v1';
 const appShellFiles = [
 'css/reset.css',
 'css/main.css',
-'img/screenshot.png',
 'js/app.js',
 'js/worker.js',
 'icons/icon-48.png',
