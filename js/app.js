@@ -9,7 +9,7 @@ var startTime;              // The start time of the entire sequence.
 var currentTwelveletNote;        // What note is currently last scheduled?
 var tempo = 120.0;          // tempo (in beats per minute)
 var meter = 4;
-var masterVolume = 0.5;
+var masterVolume = 0.25;
 var accentVolume = 1;
 var quarterVolume = 0.75;
 var eighthVolume = 0;
