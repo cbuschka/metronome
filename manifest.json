@@ -1,0 +1,22 @@
+{
+  "name": "Metronome",
+  "short_name": "metronome",
+  "description": "A metronome pwa for drummers.",
+  "icons": [
+    {
+      "src": "assets/icons/icon-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "fullscreen",
+  "theme_color": "#B12A34",
+  "background_color": "#B12A34"
+}
+
