@@ -98,10 +98,10 @@ function play() {
     currentTwelveletNote = 0;
     nextNoteTime = audioContext.currentTime;
     timerWorker.postMessage("start");
-    document.getElementById("playIcon").innerHTML = "pause";
+    document.getElementById("playButton").classList.add("paused");
   } else {
+    document.getElementById("playButton").classList.remove("paused");
     timerWorker.postMessage("stop");
-    document.getElementById("playIcon").innerHTML = "play_arrow";
   }
 }
 

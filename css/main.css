@@ -1,16 +1,68 @@
 body {
-  color: #666;
+  color: #00e317;
+  background-color: black;
+  height: 100vh;
+  width : 100vw;
+  overflow: hidden;
+  font-size: 2em;
+  font-family: "Arial";
+}
+
+#app {
+  height: 100vh;
+  width : 100vw;
 }
 
 #playButton {
-  position: absolute;
-  left: 20px;
-  top: 80px;
-  z-index: 999;
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  width: 0;
+  height: 74px;
+  border-color: transparent transparent transparent green;
+  transition: 100ms all ease;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 37px 0 37px 60px;
+}
+#playButton.paused {
+  border-style: double;
+  border-width: 0px 0 0px 60px;
+  border-color: red;
+}
+#playButton:hover {
+  border-color: transparent transparent transparent #404040;
 }
 
+
+/*
+#playButton {
+  position: absolute;
+  left: 20px;
+  top: 30px;
+  z-index: 999;
+  width: 74px;
+  height: 74px;
+}
+
+#playButton.play {
+  border-style: solid;
+  border-color: #202020;
+  box-sizing: border-box;
+  border-width: 37px 0px 37px 74px;
+  border-color: red blue green yellow;
+}
+
+#playButton.pause {
+  border-color: #202020;
+  border-style: double;
+  border-width: 0px 0px 0px 37px;
+  border-color: #202020;
+
+}
+*/
 @media all and (min-width: 1024px) {
   #replayButton {
-    top: 100px;
+    top: 40px;
   }
 }
