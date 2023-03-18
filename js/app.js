@@ -126,12 +126,20 @@ function init(){
   timerWorker.postMessage({"interval":lookahead});
 
   document.getElementById("playButton").addEventListener("click", play);
-  document.getElementById("bpmInput").addEventListener("input", (ev) => {
+  const bpmInput = document.getElementById("bpmInput");
+  bpmInput.addEventListener("input", (ev) => {
     if( /^\d+/.test(ev.target.value) ) {
       var newTempo = parseInt(ev.target.value)
-      changeTempo(newTempo)
-      bpmOutput.value = tempo;
+      if( newTempo >= MIN_TEMPO && newTempo <= MAX_TEMPO ) {
+        changeTempo(newTempo)
+      }
     }
+  });
+  bpmInput.addEventListener("change", (ev) => {
+    bpmInput.value = tempo;
+  });
+  bpmInput.addEventListener("focusout", (ev) => {
+    bpmInput.value = tempo;
   });
   document.getElementById("countInput").addEventListener("input", (ev) => {
     meter = ev.target.value;
@@ -157,19 +165,19 @@ function init(){
   });
   document.getElementById("bpmMinus10Button").addEventListener("click", (ev) => {
     changeTempo(tempo-10);
-    bpmOutput.value = tempo;
+    bpmInput.value = tempo;
   });
   document.getElementById("bpmMinus1Button").addEventListener("click", (ev) => {
     changeTempo(tempo-1);
-    bpmOutput.value = tempo;
+    bpmInput.value = tempo;
   });
   document.getElementById("bpmPlus10Button").addEventListener("click", (ev) => {
     changeTempo(tempo+10);
-    bpmOutput.value = tempo;
+    bpmInput.value = tempo;
   });
   document.getElementById("bpmPlus1Button").addEventListener("click", (ev) => {
     changeTempo(tempo+1);
-    bpmOutput.value = tempo;
+    bpmInput.value = tempo;
   });
 }
 

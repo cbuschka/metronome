@@ -1,41 +1,82 @@
-html, body {
-  color: #aeaeae;
-  background-color: black;
-  height: 100vh;
-  width : 100vw;
-  overflow: auto;
-  font-size: 1em;
+* {
+  box-sizing: border-box;
+}
+
+body {
   font-family: helvetica, arial, sans-serif;
-  line-height: 1.5;
+  background-color: black;
+  color: #aeaeae;
   margin: 0;
+  border: 0;
   padding: 0;
 }
 
 #app {
-  height: 100%;
-  width : 100%;
-  display: flex;
-  flex-direction: column;
-  border: 0;
-  margin: 0;
+  height: 100vh;
+  width : 100vw;
+  padding: 4px;
+  overflow: auto;
 }
 
-@media all and (min-width: 412px) {
-  body {
-    background-color: #aeaeae;
-  }
+.container {
+  width : 100%;
+  height: 100%;
+  background-color: black;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr 1fr;
+  grid-template-areas:
+    "bpmPanel bpmPanel measurePanel measurePanel"
+    "masterVolumePanel masterVolumePanel accentVolumePanel accentVolumePanel"
+    "quarterVolumePanel eighthVolumePanel sixteenthVolumePanel tripletsVolumePanel"
+    "playPanel playPanel playPanel playPanel";
+}
 
-  #app {
-    position: relative;
-    background-color: black;
-    margin-left: auto;
-    margin-right: auto;
-    width: 412px;
-    height: 732px;
-  }
+#bpmPanel {
+  grid-area: bpmPanel;
+}
 
-  .row {
-    width: 100%;
+#measurePanel {
+  grid-area: measurePanel;
+}
+
+#masterVolumePanel {
+  grid-area: masterVolumePanel;
+}
+
+#accentVolumePanel {
+  grid-area: accentVolumePanel;
+}
+
+#quarterVolumePanel {
+  grid-area: quarterVolumePanel;
+}
+
+#eighthVolumePanel {
+  grid-area: eighthVolumePanel;
+}
+#sixteenthVolumePanel {
+  grid-area: sixteenthVolumePanel;
+}
+#tripletsVolumePanel {
+  grid-area: tripletsVolumePanel;
+}
+
+@media only screen and (max-width: 950px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+    grid-template-areas:
+      "bpmPanel"
+      "measurePanel"
+      "masterVolumePanel"
+      "accentVolumePanel"
+      "quarterVolumePanel"
+      "eighthVolumePanel"
+      "sixteenthVolumePanel"
+      "tripletsVolumePanel"
+      "playPanel";
   }
 }
 
@@ -70,29 +111,10 @@ html, body {
   border-color: transparent transparent transparent pink;
 }
 
-h2 {
-  font-size: 1.3em;
-}
-
-h3 {
-  font-size: 1.1em;
-}
-
-.row {
-  border-top: 1px solid #a0a0a0;
-  width: 100%;
-  padding-top: 4px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.row.bottom {
-
-  padding-top: 10px;
-  padding-bottom: 10px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+label {
+  width: 30%;
+  display: block;
+  font-size: 0.6rem;
 }
 
 output {
@@ -101,13 +123,51 @@ output {
 }
 
 input, button {
+  margin: 10px;
   border-radius: 4px;
+  font-weight: bold;
   background: black;
   color: white;
   border: 1px solid #aeaeae;
   padding: 10px;
 }
 
+input[type="text"] {
+  color: yellow;
+}
+
 input[type="range"] {
   width: 90%;
 }
+
+#bpmPanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 1rem;
+  grid-template-areas:
+    "bpmMinus10Button bpmInput bpmPlus10Button"
+    "bpmMinus1Button bpmInput bpmPlus1Button"
+}
+
+#bpmMinus10Button {
+  grid-area: bpmMinus10Button; 
+}
+
+#bpmMinus1Button {
+  grid-area: bpmMinus1Button; 
+}
+
+#bpmInput {
+  grid-area: bpmInput;
+  font-size: 3rem;
+}
+
+#bpmPlus10Button {
+  grid-area: bpmPlus10Button; 
+}
+
+#bpmPlus1Button {
+  grid-area: bpmPlus1Button;  
+}
+

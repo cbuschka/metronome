@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width inital-scale=1 user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Metronome</title>
     <link rel="manifest" href="manifest.json" />
     <link rel="stylesheet" href="css/reset.css">
@@ -12,56 +12,54 @@
   </head>
   <body>
     <div id="app">
+      <div class="container">
+        <div id="bpmPanel">
+          <button name="bpmMinus10Button" id="bpmMinus10Button">-10</button>
+          <button name="bpmMinus1Button" id="bpmMinus1Button">-1</button>
+          <input type="text" name="bpm" id="bpmInput" value="120" min="20" max="400" size="3">
+          <button name="bpmPlus1Button" id="bpmPlus1Button">+1</button>
+          <button name="bpmPlus10Button" id="bpmPlus10Button">+10</button>
+        </div>
 
-        <main>
-          <div class="row">
-              <h2 id="bpm"><output name="bpm" id="bpmOutput">120</output><span> BPM</span></h2>
-              <button name="bpmMinus10Button" id="bpmMinus10Button">-10</button>
-              <button name="bpmMinus1Button" id="bpmMinus1Button">-1</button>
-              <input type="text" name="bpm" id="bpmInput" value="120" min="20" max="400">
-              <button name="bpmPlus1Button" id="bpmPlus1Button">+1</button>
-              <button name="bpmPlus10Button" id="bpmPlus10Button">+10</button>
-          </div>
+        <div id="measurePanel">
+          <label><output name="count" id="countOutput">4</output><span> counts</span></label>
+          <input type="range" name="count" id="countInput" value="4" min="1" max="12">
+        </div>
 
-          <div class="row">
-              <h2 id="bpm"><output name="count" id="countOutput">4</output><span> counts</span></h2>
-              <input type="range" name="count" id="countInput" value="4" min="1" max="12">
-          </div>
-
-          <div class="row">
-              <h3>Master Vol.</h3>
+        <div id="masterVolumePanel">
+              <label>Master Vol.</label>
               <input type="range" min="0" id="masterVolumeInput" max="100" value="25" tabindex="0">
           </div>
 
-          <div class="row">
-              <h3>Accent Vol.</h3>
+          <div id="accentVolumePanel">
+              <label>Accent Vol.</label>
               <input type="range" min="0" max="100" id="accentVolumeInput" value="100" tabindex="0">
           </div>
 
-          <div class="row">
-              <h3>Quarter Note Vol.</h3>
+          <div id="quarterVolumePanel">
+              <label>Quarter Note Vol.</label>
               <input type="range" min="0" max="100" id="quarterVolumeInput" value="75" tabindex="0">
           </div>
 
-          <div class="row">
-              <h3>Eighth Note Vol.</h3>
+          <div id="eighthVolumePanel">
+              <label>Eighth Note Vol.</label>
               <input type="range" min="0" max="100" id="eighthVolumeInput" value="0" tabindex="0">
           </div>
 
-          <div class="row">
-              <h3>Sixteenth Note Vol.</h3>
+          <div id="sixteenthVolumePanel">
+              <label>Sixteenth Note Vol.</label>
               <input type="range" min="0" max="100" id="sixteenthVolumeInput" value="0" tabindex="0">
           </div>
 
-          <div class="row">
-              <h3>Triplet Vol.</h3>
+          <div id="tripletVolumePanel">
+              <label>Triplet Vol.</label>
               <input type="range" min="0" max="100" id="tripletVolumeInput" value="0" tabindex="0">
           </div>
 
-          <div class="row bottom">
+          <div class="playPanel">
               <div class="buttonBar"><button id="playButton"/></div>
           </div>
-        </main>
+      </div>
     </div>
    </body>
 </html>

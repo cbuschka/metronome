@@ -1,4 +1,5 @@
-const cacheName = 'metronome-v1';
+const cacheVersion = 2
+const cacheName = `metronome-v${cacheVersion}`;
 const appShellFiles = [
 'css/reset.css',
 'css/main.css',
@@ -20,16 +21,37 @@ self.addEventListener('install', (e) => {
   })());
 });
 
-// Fetching content using Service Worker
-self.addEventListener('fetch', (e) => {
-  e.respondWith((async () => {
-    const r = await caches.match(e.request);
-    console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
-    if (r) return r;
-    const response = await fetch(e.request);
-    const cache = await caches.open(cacheName);
-    console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
-    cache.put(e.request, response.clone());
-    return response;
-  })());
+const fromNetwork = (request, timeout) =>
+  new Promise((fulfill, reject) => {
+    const timeoutId = setTimeout(reject, timeout);
+    fetch(request).then(response => {
+      clearTimeout(timeoutId);
+      fulfill(response);
+      update(request);
+    }, reject);
+  });
+
+const fromCache = (request) => 
+  caches
+    .open(cacheName)
+    .then(cache =>
+      cache
+        .match(request)
+        .then(matching => matching))
+    );
+
+const update = request =>
+  caches
+    .open(cacheName)
+    .then(cache =>
+      fetch(request).then(response => cache.put(request, response))
+    );
+
+// general strategy when making a request (eg if online try to fetch it
+// from the network with a timeout, if something fails serve from cache)
+self.addEventListener('fetch', evt => {
+  evt.respondWith(
+    fromNetwork(evt.request, 10000).catch(() => fromCache(evt.request))
+  );
+  evt.waitUntil(update(evt.request));
 });
