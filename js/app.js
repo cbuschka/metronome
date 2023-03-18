@@ -3,6 +3,11 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js');
 }
 
+if ( navigator.userAgent.match(/Android/i) ) {
+  const htmlElement = document.getElementsByTagName( 'html' )[0];
+  htmlElement.classList.add("android");
+}
+
 const MIN_TEMPO = 20;
 const MAX_TEMPO = 400;
 var audioContext = null;

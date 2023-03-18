@@ -14,8 +14,10 @@ body {
 #app {
   height: 100vh;
   width : 100vw;
-  padding: 4px;
+  padding: 0.25em;
   overflow: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .container {
@@ -80,11 +82,14 @@ body {
   }
 }
 
+.android .container {
+  max-height: 90vh;
+}
+
 #playButton {
   padding: 0;
   border: 0;
   background: transparent;
-  box-sizing: border-box;
   width: 0;
   height: 74px;
   border-color: transparent transparent transparent green;
@@ -123,13 +128,13 @@ output {
 }
 
 input, button {
-  margin: 10px;
-  border-radius: 4px;
+  margin: 0.5rem;
+  border-radius: 8px;
   font-weight: bold;
   background: black;
   color: white;
   border: 1px solid #aeaeae;
-  padding: 10px;
+  padding: 0.5rem;
 }
 
 input[type="text"] {
@@ -160,7 +165,7 @@ input[type="range"] {
 
 #bpmInput {
   grid-area: bpmInput;
-  font-size: 3rem;
+  font-size: 2em;
 }
 
 #bpmPlus10Button {
