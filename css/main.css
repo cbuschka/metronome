@@ -100,6 +100,14 @@ output {
   font-weight: bold;
 }
 
-input {
+input, button {
+  border-radius: 4px;
+  background: black;
+  color: white;
+  border: 1px solid #aeaeae;
+  padding: 10px;
+}
+
+input[type="range"] {
   width: 90%;
 }

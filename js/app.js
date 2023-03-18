@@ -3,6 +3,8 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js');
 }
 
+const MIN_TEMPO = 20;
+const MAX_TEMPO = 400;
 var audioContext = null;
 var isPlaying = false;      // Are we currently playing?
 var startTime;              // The start time of the entire sequence.
@@ -105,6 +107,10 @@ function play() {
   }
 }
 
+function changeTempo(newTempo) {
+  tempo = Math.max(Math.min(newTempo, MAX_TEMPO), MIN_TEMPO);
+}
+
 function init(){
   audioContext = new AudioContext();
   timerWorker = new Worker("js/worker.js");
@@ -121,8 +127,11 @@ function init(){
 
   document.getElementById("playButton").addEventListener("click", play);
   document.getElementById("bpmInput").addEventListener("input", (ev) => {
-    tempo = ev.target.value;
-    bpmOutput.value = bpmInput.value;
+    if( /^\d+/.test(ev.target.value) ) {
+      var newTempo = parseInt(ev.target.value)
+      changeTempo(newTempo)
+      bpmOutput.value = tempo;
+    }
   });
   document.getElementById("countInput").addEventListener("input", (ev) => {
     meter = ev.target.value;
@@ -145,6 +154,22 @@ function init(){
   });
   document.getElementById("tripletVolumeInput").addEventListener("input", (ev) => {
     tripletVolume = ev.target.value / 100;
+  });
+  document.getElementById("bpmMinus10Button").addEventListener("click", (ev) => {
+    changeTempo(tempo-10);
+    bpmOutput.value = tempo;
+  });
+  document.getElementById("bpmMinus1Button").addEventListener("click", (ev) => {
+    changeTempo(tempo-1);
+    bpmOutput.value = tempo;
+  });
+  document.getElementById("bpmPlus10Button").addEventListener("click", (ev) => {
+    changeTempo(tempo+10);
+    bpmOutput.value = tempo;
+  });
+  document.getElementById("bpmPlus1Button").addEventListener("click", (ev) => {
+    changeTempo(tempo+1);
+    bpmOutput.value = tempo;
   });
 }
 
